@@ -1,0 +1,29 @@
+# Constante: umbral de horas estándar
+UMBRAL_HORAS = 40
+
+# Matriz con 4 recursos y sus horas trabajadas de lunes a viernes
+# Formato: [Nombre, Lunes, Martes, Miércoles, Jueves, Viernes]
+equipo = [
+    ["Ana García", 8, 9, 8, 7, 6],
+    ["Luis Pérez", 10, 9, 8, 8, 7],
+    ["Marta López", 7, 7, 6, 8, 7],
+    ["Carlos Ruiz", 9, 9, 9, 9, 9]
+]
+
+# Función para calcular horas semanales y clasificar jornada
+def calcular_jornada(recurso):
+    nombre = recurso[0]
+    horas_semana = sum(recurso[1:])  # suma de las horas de lunes a viernes
+    
+    if horas_semana > UMBRAL_HORAS:
+        clasificacion = "Sobretiempo"
+    else:
+        clasificacion = "Horario Estándar"
+    
+    return nombre, horas_semana, clasificacion
+
+# Programa principal
+print("=== Informe Semanal de Horas ===")
+for empleado in equipo:  # estructura repetitiva
+    nombre, horas, clasificacion = calcular_jornada(empleado)
+    print(f"{nombre}: {horas} horas → {clasificacion}")
